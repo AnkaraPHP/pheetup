@@ -1,0 +1,20 @@
+language: php
+php:
+  - 5.6
+  - 7
+addons:
+  postgresql: "9.3"
+services:
+  - postgresql
+script: phpunit -c app/
+env:
+  - SYMFONY_VERSION=2.8.*
+notifications:
+  email:
+    - ankaraphp@googlegroups.com
+before_script:
+  - sudo apt-get update > /dev/null
+  - sudo apt-get install language-pack-tr
+  - psql -c 'create database pheetup;' -U postgres
+  - cp app/config/parameters.yml.dist app/config/parameters.yml
+  - composer install
