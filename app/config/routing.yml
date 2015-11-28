@@ -1,3 +1,26 @@
-app:
-    resource: "@AppBundle/Controller/"
+pheetup_site:
+    resource: "@PheetupSiteBundle/Controller/"
     type:     annotation
+    prefix:   /
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    prefix: /
+
+github_login:
+    path: /login/check-github
+pheetup_user:
+    resource: "@PheetupUserBundle/Controller/"
+    type:     annotation
+    prefix:   /user
+
+pheetup_meetup:
+    resource: "@PheetupMeetupBundle/Controller/"
+    type:     annotation
+    prefix:   /meetup
