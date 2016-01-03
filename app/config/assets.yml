@@ -1,0 +1,28 @@
+assetic:
+  debug:          '%kernel.debug%'
+  use_controller: '%kernel.debug%'
+  bundles: ['PheetupAdminBundle','MopaBootstrapBundle']
+  filters:
+      cssrewrite: ~
+      less:
+        node: /usr/local/bin/node
+        node_paths: [/usr/local/lib/node_modules]
+        apply_to: "\.less$"
+  assets:
+    admin_css:
+      inputs:
+        - '@MopaBootstrapBundle/Resources/public/less/mopabootstrapbundle.less'
+        - 'bundles/pheetupadmin/css/sb-admin.css'
+        - 'bundles/pheetupadmin/font-awesome/css/font-awesome.min.css'
+        - 'bundles/pheetupadmin/css/style.css'
+      output: 'assets/admin.css'
+      filter: 'cssrewrite'
+    admin_js:
+      inputs:
+        - '@PheetupAdminBundle/Resources/public/js/jquery.js'
+        - '@MopaBootstrapBundle/Resources/public/bootstrap/js/tooltip.js'
+        - '@MopaBootstrapBundle/Resources/public/bootstrap/js/*.js'
+        - '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+        - '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+        - '@PheetupAdminBundle/Resources/public/js/ready.js'
+      output: 'assets/admin.js'

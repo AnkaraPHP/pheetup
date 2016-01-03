@@ -1,3 +1,5 @@
+php.tags
+.DS_STORE
 ### Symfony ###
 # Cache and logs (Symfony2)
 /app/cache/*
@@ -26,7 +28,7 @@
 # Assets and user uploads
 /web/bundles/
 /web/uploads/
-
+/web/assets/
 # Assets managed by Bower
 /web/assets/vendor/
 

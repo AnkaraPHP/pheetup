@@ -1,3 +1,8 @@
+pheetup_admin:
+    resource: "@PheetupAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
 pheetup_site:
     resource: "@PheetupSiteBundle/Controller/"
     type:     annotation

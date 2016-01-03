@@ -1,0 +1,14 @@
+{% extends '@PheetupAdmin/layout.html.twig' %}
+{% block page_title %}Hesabım{% endblock %}
+{% block brandcrumbs %}
+    <li class="active">
+        <i class="fa fa-edit"></i> Hesabımı Güncelle
+    </li>
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            {{ form(form) }}
+        </div>
+    </div>
+{% endblock %}

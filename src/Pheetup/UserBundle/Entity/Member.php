@@ -40,6 +40,17 @@ class Member extends User
     protected $github_access_token;
 
     /**
+     * @var string
+     * @ORM\Column(name="first_name", type="string", nullable=true)
+     */
+    protected $first_name;
+
+    /**
+     * @var string
+     * @ORM\Column(name="last_name", type="string", nullable=true)
+     */
+    protected $last_name;
+    /**
      * @return string
      */
     public function getGithubId()
@@ -70,6 +81,43 @@ class Member extends User
     {
         $this->github_access_token = $github_access_token;
     }
+
+    /**
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->first_name;
+    }
+
+    /**
+     * @param $first_name
+     * @return $this
+     */
+    public function setFirstName($first_name)
+    {
+        $this->first_name = $first_name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->last_name;
+    }
+
+    /**
+     * @param $last_name
+     * @return $this
+     */
+    public function setLastName($last_name)
+    {
+        $this->last_name = $last_name;
+        return $this;
+    }
+
 
 
 }

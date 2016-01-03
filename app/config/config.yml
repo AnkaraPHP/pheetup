@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: assets.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -104,3 +105,5 @@ hwi_oauth:
         username_iterations: 30
         properties:
             github: github_id
+mopa_bootstrap:
+    form: ~  # Adds twig form theme  support
