@@ -12,13 +12,19 @@ class UserType extends AbstractType
     {
         $builder
             ->add('first_name')
-            ->add('last_name');
+            ->add('last_name')
+            ->add('email')
+            ->add('password','password')
+            ->add('submit','submit',[
+              'label'=>'Kaydet'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Pheetup\UserBundle\Entity\Member'
+          'data_class' => 'Pheetup\UserBundle\Entity\Member',
+          'label'=>'Kullanıcı Güncelle'
         ]);
     }
 
