@@ -1,0 +1,10 @@
+{% for event in eventArr %}
+    <table>
+        <tr><td>Etkinlik Id :</td> <td>{{ event.id }}</td></tr>
+        <tr><td>Etkinlik Adı :</td> <td>{{ event.title }}</td></tr>
+        <tr><td>Etkinlik Kaçta Başlıyor :</td> <td>{{ event.start | date("d/m/Y h:m") }}</td></tr>
+        <tr><td>Etkinlik Kaçta Bitiyor :</td> <td>{{ event.finish | date("d/m/Y h:m") }}</td></tr>
+        <tr><td>Etkinlik Nerede :</td> <td>{{ event.location }}</td></tr>
+        <tr><td>Etkinlik Detayları :</td> <td>{{ event.description |nl2br }}</td></tr>
+    </table>
+{% endfor %}
