@@ -7,24 +7,21 @@
  */
 
 namespace Pheetup\MeetupBundle\Entity;
+
 use Doctrine\ORM\Mapping AS ORM;
 
 /**
  * @ORM\Entity()
  * @ORM\Table
  */
-class Event {
+class Event
+{
     /**
      * @ORM\Column(name="id",type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    protected  $id;
-    /**
-     * @ORM\Column(name="parent",type="integer")
-     *
-     */
-    protected $parent;
+    protected $id;
     /**
      * @ORM\Column(name="title",type="string")
      */
@@ -56,29 +53,6 @@ class Event {
         return $this->id;
     }
 
-    /**
-     * Set parent
-     *
-     * @param integer $parent
-     *
-     * @return Event
-     */
-    public function setParent($parent)
-    {
-        $this->parent = $parent;
-
-        return $this;
-    }
-
-    /**
-     * Get parent
-     *
-     * @return integer
-     */
-    public function getParent()
-    {
-        return $this->parent;
-    }
 
     /**
      * Set title
@@ -87,7 +61,7 @@ class Event {
      *
      * @return Event
      */
-    public function setTitle($title)
+    public function setTitle( $title )
     {
         $this->title = $title;
 
@@ -111,7 +85,7 @@ class Event {
      *
      * @return Event
      */
-    public function setStart($start)
+    public function setStart( $start )
     {
         $this->start = $start;
 
@@ -135,7 +109,7 @@ class Event {
      *
      * @return Event
      */
-    public function setFinish($finish)
+    public function setFinish( $finish )
     {
         $this->finish = $finish;
 
@@ -159,7 +133,7 @@ class Event {
      *
      * @return Event
      */
-    public function setLocation($location)
+    public function setLocation( $location )
     {
         $this->location = $location;
 
@@ -183,7 +157,7 @@ class Event {
      *
      * @return Event
      */
-    public function setDescription($description)
+    public function setDescription( $description )
     {
         $this->description = $description;
 
