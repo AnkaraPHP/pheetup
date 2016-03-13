@@ -1,23 +1,29 @@
 <?php
+
 namespace Pheetup\MeetupBundle\Tests\Entity;
 
+use Pheetup\CoreBundle\Tests\Repository\DoctrineTestCase;
 use Pheetup\MeetupBundle\Entity\Event;
 
-/**
- * User: emreyilmaz
- * Date: 13.03.2016
- * Time: 13:42
- */
-class EventTest extends \PHPUnit_Framework_TestCase
+
+class EventTest extends DoctrineTestCase
 {
-    public function testNewEvent()
+
+    protected function setUp()
     {
-        $event = new Event();
-        $event->setDescription("Description")
-            ->setLocation("Ankara, Turkey")
-            ->setStart(new \DateTime("+4 days"))
-            ->setFinish(new \DateTime("+5 days"))
-            ->setTitle("AnkaraPHP Februus");
-        $this->assertTrue($event->getTitle() == "AnkaraPHP Februus");
+        $this->loadFixturesFromDirectory( __DIR__ . '/DataFixtures' );
+    }
+
+    public function testGetEvent()
+    {
+        $eventRepo = $this->getRepository();
+        $events    = $eventRepo->findAll();
+        $this->assertCount( 1, $events );
+        $this->assertEquals( 'Kivilcim TTGV', $events[0]->getLocation() );
+    }
+
+    protected function getRepository()
+    {
+        return $this->em->getRepository( 'PheetupMeetupBundle:Event' );
     }
 }
