@@ -7,7 +7,7 @@ assetic:
       less:
         node: /usr/local/bin/node
         node_paths: [/usr/local/lib/node_modules]
-        apply_to: "\.less$"
+        apply_to: '\.less$'
   assets:
     admin_css:
       inputs:
