@@ -48,6 +48,9 @@ To run the Pheetup test suite, install the external dependencies used during the
 To do so, install Composer and execute the following:
 
 	$ composer update
+	$ rm -rf app/sqlite
+	$ php app/console doctrine:schema:update --force --env=test
+
 
 #### Running the Tests
 
