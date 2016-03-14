@@ -63,4 +63,5 @@ The output should display OK. If not, read the reported errors to figure out wha
 
 ### Coding Standards
 
-We use [Symfony`s coding standarts](https://symfony.com/doc/current/contributing/code/standards.html)
+- We use [Symfony`s coding standarts](https://symfony.com/doc/current/contributing/code/standards.html)
+- [Project Standarts](https://github.com/AnkaraPHP/pheetup/blob/master/STANDARD.md)
