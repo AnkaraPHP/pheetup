@@ -5,6 +5,10 @@ Pheetup is an open source, community-driven project.
 
 If you'd like to contribute, please read the following documents:
 
+### Slack Communication channel
+
+We talk  about pheetup project in slack. If you want to join our slack group, please send an email to ankaraphp06@gmail.com  and we invite you to the slack group.
+
 ### Reporting a Bug
 
 Whenever you find a bug in Pheetup, we kindly ask you to report it. It helps
