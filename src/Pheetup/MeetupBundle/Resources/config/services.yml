@@ -1,0 +1,4 @@
+services:
+  pheetup.controller.meetup.event:
+    class: Pheetup\MeetupBundle\Controller\EventController
+    arguments: [ '@service_container' ]

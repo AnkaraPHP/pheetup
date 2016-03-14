@@ -11,7 +11,7 @@ namespace Pheetup\MeetupBundle\Entity;
 use Doctrine\ORM\Mapping AS ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Pheetup\MeetupBundle\Entity\EventRepository")
  * @ORM\Table
  */
 class Event
