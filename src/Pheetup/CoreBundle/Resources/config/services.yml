@@ -1,0 +1,6 @@
+services:
+    pheetup.route_loader:
+        class: Pheetup\CoreBundle\Route\RouteLoader
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+          - { name: routing.loader }

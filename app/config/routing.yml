@@ -2,7 +2,9 @@ pheetup_admin:
     resource: "@PheetupAdminBundle/Controller/"
     type:     annotation
     prefix:   /admin
-
+pheetup_crud:
+    resource: .
+    type: extra
 pheetup_site:
     resource: "@PheetupSiteBundle/Controller/"
     type:     annotation
