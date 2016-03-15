@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c14d7355cc3bb1282a1a1ebb50e9a023",
-    "content-hash": "729b125b3a1df05281f15820a595d51f",
+    "hash": "9415cc937aea1bc720b60266de61d24e",
+    "content-hash": "8053fdb52f41807f7b00dddb9c3e3196",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2502,12 +2502,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "614559b41ab71cba318b97c8e7e8277917d4fdde"
+                "reference": "55f6efbbaed0fa343566f180b4fe62feda136a86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/614559b41ab71cba318b97c8e7e8277917d4fdde",
-                "reference": "614559b41ab71cba318b97c8e7e8277917d4fdde",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/55f6efbbaed0fa343566f180b4fe62feda136a86",
+                "reference": "55f6efbbaed0fa343566f180b4fe62feda136a86",
                 "shasum": ""
             },
             "replace": {
@@ -2545,7 +2545,7 @@
                 "responsive",
                 "web"
             ],
-            "time": "2016-03-11 09:09:21"
+            "time": "2016-03-15 06:02:13"
         },
         {
             "name": "twig/twig",
@@ -3853,7 +3853,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.3.9"
+        "php": ">=5.3.9",
+        "ext-mbstring": "*"
     },
     "platform-dev": []
 }

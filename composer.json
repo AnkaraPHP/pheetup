@@ -9,8 +9,8 @@
     }
   },
   "require": {
-    "ext-mbstring": "*",
     "php": ">=5.3.9",
+    "ext-mbstring": "*",
     "symfony/symfony": "2.7.*",
     "doctrine/orm": "^2.4.8",
     "doctrine/doctrine-bundle": "~1.4",
