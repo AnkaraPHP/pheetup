@@ -14,7 +14,7 @@ imports:
 #        query_cache_driver: apc
 doctrine:
     dbal:
-        database_url: %database_url%
+        url: %database_url%
 monolog:
     handlers:
         main:
