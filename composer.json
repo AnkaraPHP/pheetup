@@ -67,7 +67,9 @@
       "file": "app/config/parameters.yml",
       "env-map": {
         "database_url": "DATABASE_URL",
-        "monolog_action_level": "LOG_LEVEL"
+        "monolog_action_level": "LOG_LEVEL",
+        "github.client_id": "GITHUB_CLIENT_ID",
+        "github.client_secret": "GITHUB_CLIENT_SECRET"
       }
     },
     "branch-alias": {
