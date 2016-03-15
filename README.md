@@ -38,6 +38,10 @@ Pheetup is an opensource and simple community portal.
 
 Clone project and run install.sh
 
+### Demo
+
+[http://pheetup.herokuapp.com/](http://pheetup.herokuapp.com/)
+
 ### Documentation
 
 work in progress
