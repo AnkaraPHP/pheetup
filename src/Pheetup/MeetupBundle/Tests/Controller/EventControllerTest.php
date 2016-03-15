@@ -8,7 +8,6 @@ namespace Pheetup\MeetupBundle\Tests\Controller;
 
 
 use Pheetup\CoreBundle\Tests\Controller\ControllerTestCase;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -69,5 +68,21 @@ class EventControllerTest extends ControllerTestCase
         $event = $eventRepository->findOneBy( [ 'location' => $key ] );
 
         $this->assertNotNull( $event->getId() );
+
+    }
+
+    public function testListAction()
+    {
+        $request = new Request();
+        /** @var Response $response */
+        $response = $this->controller->listAction( $request );
+        $this->assertRegExp( '~AnkaraPHP~', $response->getContent() );
+    }
+
+    public function testDeleteAction()
+    {
+        $request  = new Request();
+        $response = $this->controller->deleteAction( $request, 1 );
+        $this->assertEquals( '302', $response->getStatusCode() );
     }
 }
