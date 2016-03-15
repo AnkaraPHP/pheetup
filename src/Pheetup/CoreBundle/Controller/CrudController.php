@@ -5,9 +5,9 @@ namespace Pheetup\CoreBundle\Controller;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Pheetup\CoreBundle\Entity\CrudRepositoryInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -49,15 +49,25 @@ class CrudController extends Controller
         $form = $this->getCreateForm( $entity );
 
 
-        $form->handleRequest($request);
+        $form->handleRequest( $request );
 
-        if($form->isSubmitted() && $request->getMethod()=="POST"){
-           /* $em = $this->getDoctrine()->getManager();
-            $em->persist($event);
-            $em->flush();
-            return Response::create("Etkinlik Oluşturuldu");*/
+        if ( $form->isSubmitted() && $request->getMethod() == "POST" )
+        {
+            if ( $form->isValid() )
+            {
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist( $entity );
+                $em->flush();
+                $router = $this->container->get( 'router' );
+
+                return RedirectResponse::create( $router->generate( 'pheetup_event' ) );
+            }
+            else
+            {
+                return Response::create( $form->getErrorsAsString(), 406 );
+            }
         }
-
         $viewData['form'] = $form->createView();
 
         $response = $this->render( $this->createView, $viewData );
