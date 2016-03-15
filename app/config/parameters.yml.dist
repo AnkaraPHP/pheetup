@@ -21,3 +21,7 @@ parameters:
 
     github.client_id: 1
     github.client_secret: 1
+
+    #for production
+    database_url: ~
+    monolog_action_level: error
