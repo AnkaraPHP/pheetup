@@ -90,6 +90,9 @@ fos_user:
     registration: ~
     service: ~
     resetting: ~
+    group:
+      group_class: Pheetup\UserBundle\Entity\Group
+
 hwi_oauth:
     connect:
         account_connector: pheetup.user_provider

@@ -2,6 +2,7 @@
 
 namespace Pheetup\UserBundle\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User;
 
@@ -50,6 +51,16 @@ class Member extends User
      * @ORM\Column(name="last_name", type="string", nullable=true)
      */
     protected $last_name;
+
+    /**
+     * @var Collection
+     * @ORM\ManyToMany(targetEntity="Pheetup\UserBundle\Entity\Group")
+     * @ORM\JoinTable(name="meetup_member_group",
+     *     joinColumns={@ORM\JoinColumn(name="member_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")})
+     */
+    protected $groups;
+
     /**
      * @return string
      */
@@ -61,7 +72,7 @@ class Member extends User
     /**
      * @param string $github_id
      */
-    public function setGithubId($github_id)
+    public function setGithubId( $github_id )
     {
         $this->github_id = $github_id;
     }
@@ -77,7 +88,7 @@ class Member extends User
     /**
      * @param string $github_access_token
      */
-    public function setGithubAccessToken($github_access_token)
+    public function setGithubAccessToken( $github_access_token )
     {
         $this->github_access_token = $github_access_token;
     }
@@ -92,11 +103,13 @@ class Member extends User
 
     /**
      * @param $first_name
+     *
      * @return $this
      */
-    public function setFirstName($first_name)
+    public function setFirstName( $first_name )
     {
         $this->first_name = $first_name;
+
         return $this;
     }
 
@@ -110,15 +123,15 @@ class Member extends User
 
     /**
      * @param $last_name
+     *
      * @return $this
      */
-    public function setLastName($last_name)
+    public function setLastName( $last_name )
     {
         $this->last_name = $last_name;
+
         return $this;
     }
 
 
-
 }
-
