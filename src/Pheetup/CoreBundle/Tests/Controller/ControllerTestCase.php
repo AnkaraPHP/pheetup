@@ -7,6 +7,7 @@
 namespace Pheetup\CoreBundle\Tests\Controller;
 
 
+use Pheetup\CoreBundle\Controller\CrudController;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ControllerTestCase extends WebTestCase
@@ -16,7 +17,7 @@ class ControllerTestCase extends WebTestCase
 
     /** @var \Symfony\Component\DependencyInjection\ContainerInterface */
     protected $container;
-
+    /** @var  CrudController */
     protected $controller;
 
     public function __construct( $name = NULL, array $data = [ ], $dataName = "" )

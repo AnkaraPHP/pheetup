@@ -7,21 +7,24 @@
 namespace Pheetup\MeetupBundle\Tests\Controller;
 
 
+use Doctrine\ORM\EntityManager;
 use Pheetup\CoreBundle\Tests\Controller\ControllerTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class EventControllerTest extends ControllerTestCase
 {
+    /** @var  EntityManager */
+    private $em;
+
     protected function setUp()
     {
         $this->setController( 'meetup.event' );
+        $this->em = $this->container->get( 'doctrine.orm.entity_manager' );
     }
 
     public function testCreateEvent()
     {
-        $key = 'Ankara, Turkiye ' . uniqid();
-
         $request = new Request();
         $request->setMethod( 'POST' );
         $startDate  = new \DateTime( "-3 days" );
@@ -29,7 +32,7 @@ class EventControllerTest extends ControllerTestCase
         $csrf       = $this->container->get( 'security.csrf.token_manager' );
         $token      = $csrf->getToken( 'pheetup_meetupbundle_event' );
         $request->request->set( 'pheetup_meetupbundle_event', [
-            'title'       => 'AnkaraPHP Uzak Diyarlar',
+            'title'       => "AnkaraPHP",
             'description' => 'Deneme',
             'start'       => [
                 'date' => [
@@ -54,7 +57,7 @@ class EventControllerTest extends ControllerTestCase
                 ],
             ],
             'submit'      => 'submit',
-            'location'    => $key,
+            'location'    => "Ankara, Turkiye",
             '_token'      => $token,
         ] );
         /** @var Response $response */
@@ -62,10 +65,9 @@ class EventControllerTest extends ControllerTestCase
 
         $this->assertEquals( 302, $response->getStatusCode() );
 
-        $em              = $this->container->get( 'doctrine.orm.entity_manager' );
-        $eventRepository = $em->getRepository( 'PheetupMeetupBundle:Event' );
+        $eventRepository = $this->em->getRepository( 'PheetupMeetupBundle:Event' );
 
-        $event = $eventRepository->findOneBy( [ 'location' => $key ] );
+        $event = $eventRepository->findOneBy( [ 'title' => "AnkaraPHP" ] );
 
         $this->assertNotNull( $event->getId() );
 
@@ -76,13 +78,18 @@ class EventControllerTest extends ControllerTestCase
         $request = new Request();
         /** @var Response $response */
         $response = $this->controller->listAction( $request );
-        $this->assertRegExp( '~AnkaraPHP~', $response->getContent() );
+        $this->assertRegExp( '~Event~', $response->getContent() );
     }
 
     public function testDeleteAction()
     {
-        $request  = new Request();
-        $response = $this->controller->deleteAction( $request, 1 );
+        $request = new Request();
+        $eventRepo = $this->em->getRepository( 'PheetupMeetupBundle:Event' );
+
+        $event = $eventRepo->findOneBy( [ 'title' => "AnkaraPHP" ] );
+
+        $response = $this->controller->deleteAction( $request, $event->getId() );
         $this->assertEquals( '302', $response->getStatusCode() );
     }
+
 }

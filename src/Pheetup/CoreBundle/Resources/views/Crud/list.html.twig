@@ -1,0 +1,21 @@
+List of {{ title }}
+<table>
+    <thead>
+    <tr>
+
+        <th>ID</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>
+                <a href="{{ url('pheetup_event_delete',{id: item.id}) }}" data-id="{{ item.id }}">delete</a> -
+                <a href="{{ url('pheetup_event_create',{id: item.id}) }}">edit</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

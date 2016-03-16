@@ -10,12 +10,15 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CrudController extends Controller
 {
     /** @var  string */
     protected $formType;
 
+    /** @var  string required for page headers */
+    protected $name;
     /** @var EntityManager */
     protected $em;
 
@@ -75,14 +78,31 @@ class CrudController extends Controller
         return $response;
     }
 
-    public function listAction()
+    public function listAction( Request $request )
     {
-        return new Response();
+        //@todo pagination
+        $repo              = $this->getRepository();
+        $items             = $repo->findAll();
+        $viewData          = [ ];
+        $viewData['items'] = $items;
+        $viewData['title'] = $this->name;
+        $response          = $this->render( "@PheetupCore/Crud/list.html.twig", $viewData );
+
+        return $response;
     }
 
-    public function deleteAction()
+    public function deleteAction( Request $request, $id )
     {
-        return new Response();
+        $event = $this->em->find( 'PheetupMeetupBundle:Event', $id );
+        if ( !$event )
+        {
+            throw new NotFoundHttpException;
+        }
+        $router   = $this->get( 'router' );
+        $listPage = $router->generate( 'pheetup_event' );
+
+        //@todo add delete message to flashbag.
+        return RedirectResponse::create( $listPage, 302 );
     }
 
     public function viewAction()
