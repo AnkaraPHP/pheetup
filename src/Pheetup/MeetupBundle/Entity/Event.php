@@ -23,7 +23,7 @@ class Event
      */
     protected $id;
     /**
-     * @ORM\Column(name="title",type="string")
+     * @ORM\Column(name="title",type="string", unique=true)
      */
     protected $title;
     /**
