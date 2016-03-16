@@ -14,6 +14,7 @@ use Pheetup\MeetupBundle\Entity\Event;
 class EventController extends Controller
 {
     protected $formType = 'Pheetup\MeetupBundle\Form\EventType';
+    protected $name = 'Event';
 
     protected function getRepository()
     {
