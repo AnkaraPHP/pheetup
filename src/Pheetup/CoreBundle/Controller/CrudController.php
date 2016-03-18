@@ -105,6 +105,7 @@ class CrudController extends Controller
         $em->flush();
         $session= $this->get('session');
         $session->getFlashBag()->add('notice','Successfully Deleted Event');
+
         return RedirectResponse::create( $listPage, 302 );
     }
 

@@ -1,8 +1,9 @@
-{% for flashMessage in app.session.flashbag.get('notice') %}
-
-    {{ flashMessage }}
-    <br>
-{% endfor %}
+{% if(app.session is not null) %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        {{ flashMessage }}
+        <br>
+    {% endfor %}
+{% endif %}
 List of {{ title }}
 <table>
     <thead>
