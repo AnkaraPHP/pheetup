@@ -93,15 +93,19 @@ class CrudController extends Controller
 
     public function deleteAction( Request $request, $id )
     {
-        $event = $this->em->find( 'PheetupMeetupBundle:Event', $id );
+        $em = $this->em;
+        $event = $em->find( 'PheetupMeetupBundle:Event', $id );
         if ( !$event )
         {
             throw new NotFoundHttpException;
         }
         $router   = $this->get( 'router' );
         $listPage = $router->generate( 'pheetup_event' );
+        $em->remove($event);
+        $em->flush();
+        $session= $this->get('session');
+        $session->getFlashBag()->add('notice','Successfully Deleted Event');
 
-        //@todo add delete message to flashbag.
         return RedirectResponse::create( $listPage, 302 );
     }
 
