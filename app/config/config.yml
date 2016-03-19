@@ -110,11 +110,3 @@ hwi_oauth:
             github: github_id
 mopa_bootstrap:
     form: ~  # Adds twig form theme  support
-stof_doctrine_extensions:
-    default_locale: tr_TR
-    orm:
-        default:
-            tree: true
-            timestampable: true
-        other:
-            timestampable: true
