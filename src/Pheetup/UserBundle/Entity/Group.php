@@ -31,6 +31,21 @@ class Group extends \FOS\UserBundle\Model\Group
      * @ORM\Column(name="domain", type="string", length=255, nullable=false)
      */
     protected $domain;
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $description;
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $location;
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $logo;
 
     /**
      * Set domain
@@ -54,5 +69,77 @@ class Group extends \FOS\UserBundle\Model\Group
     public function getDomain()
     {
         return $this->domain;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Group
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set location
+     *
+     * @param string $location
+     *
+     * @return Group
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Set logo
+     *
+     * @param string $logo
+     *
+     * @return Group
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    /**
+     * Get logo
+     *
+     * @return string
+     */
+    public function getLogo()
+    {
+        return $this->logo;
     }
 }
