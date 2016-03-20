@@ -91,6 +91,18 @@ class RouteLoader implements LoaderInterface
         ]);
         $this->routes->add('pheetup_' . $routeKey . '_delete', $deleteRoute);
 
+
+        //view
+        $viewPattern = $prefix.'/'.$routeKey.'/explore/{id}';
+        $viewDefaults = [
+            '_controller' => $controller_service.':viewAction',
+        ];
+        $viewRoute = new Route(
+            $viewPattern, $viewDefaults, [
+                'id' => '\d+',
+            ]
+        );
+        $this->routes->add('pheetup_'.$routeKey.'_view', $viewRoute);
     }
 
     /**
