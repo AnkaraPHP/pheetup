@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class Group
  *
  * @package Pheetup\UserBundle\Entity
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Pheetup\UserBundle\Entity\GroupRepository")
  * @ORM\Table(name="meetup_group")
  */
 class Group extends \FOS\UserBundle\Model\Group

@@ -2,7 +2,7 @@
 
 namespace Pheetup\UserBundle\Controller;
 
-use Pheetup\CoreBundle\Controller\GrupCrudController AS Controller;
+use Pheetup\CoreBundle\Controller\CrudController AS Controller;
 use Pheetup\UserBundle\Entity\Group;
 
 class GroupController extends Controller
@@ -15,8 +15,4 @@ class GroupController extends Controller
         return $this->em->getRepository("PheetupUserBundle:Group");
     }
 
-    protected function getEntity()
-    {
-        return new Group('');
-    }
 }

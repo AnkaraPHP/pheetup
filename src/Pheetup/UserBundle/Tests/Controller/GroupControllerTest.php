@@ -42,7 +42,7 @@ class GroupControllerTest extends ControllerTestCase
             ]
         );
         $response = $this->controller->createAction($request);
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(302, $response->getStatusCode());
 
         $groupRepository = $this->em->getRepository('PheetupUserBundle:Group');
 
