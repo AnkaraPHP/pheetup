@@ -11,5 +11,8 @@
                 <argument key="github">github_id</argument>
             </argument>
         </service>
+        <service id="pheetup.controller.user.group" class="Pheetup\UserBundle\Controller\GroupController">
+            <argument type="service" id="service_container"/>
+        </service>
     </services>
 </container>
