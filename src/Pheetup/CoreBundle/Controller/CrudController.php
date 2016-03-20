@@ -109,9 +109,15 @@ class CrudController extends Controller
         return RedirectResponse::create( $listPage, 302 );
     }
 
-    public function viewAction()
+    public function viewAction($id)
     {
-        return new Response();
+        $repo = $this->getRepository();
+        $view = [];
+        $item = $repo->find($id);
+        $view["item"] = (array)$item;
+        $view["title"] = $this->name;
+
+        return $this->render('@PheetupCore/Crud/view.html.twig', $view);
     }
 
     /** @return EntityRepository */

@@ -81,6 +81,13 @@ class EventControllerTest extends ControllerTestCase
         $this->assertRegExp( '~Event~', $response->getContent() );
     }
 
+    public function testViewAction()
+    {
+        $response = $this->controller->viewAction(1);
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertRegExp('~id~', $response->getContent());
+    }
+
     public function testDeleteAction()
     {
         $request = new Request();

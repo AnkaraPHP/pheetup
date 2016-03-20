@@ -8,7 +8,7 @@ use Pheetup\UserBundle\Entity\Group;
 class GroupController extends Controller
 {
     protected $formType = 'Pheetup\UserBundle\Form\GroupType';
-    protected $name = 'Event';
+    protected $name = 'Group';
 
     protected function getRepository()
     {
