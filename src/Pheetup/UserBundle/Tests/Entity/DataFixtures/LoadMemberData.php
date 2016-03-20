@@ -35,7 +35,10 @@ class LoadMemberData extends AbstractFixture
         $om->persist( $member );
 
         $group = new Group("AnkaraPHP");
-        $group->setDomain( "ankaraphp" )
+        $group->setDomain("ankaraphp");
+        $group->setDescription("Ankaradaki Php geliştiricilerinin toplandığı bir grup");
+        $group->setLocation("Ankara/Turkey");
+        $group->setLogo("img.png");
         ;
         $this->addReference( 'group-ankaraphp', $group );
 
