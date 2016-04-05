@@ -18,6 +18,7 @@ class EventType extends AbstractType
             ->add('title',"text",[
                 "label"=>"Etkinlik Adı"
             ])
+            ->add('group', 'text')
             ->add('start','datetime',[
                 "label"=>"Etkinlik Ne Zaman Başlıyor"
             ])
@@ -51,4 +52,5 @@ class EventType extends AbstractType
     {
         return 'pheetup_meetupbundle_event';
     }
+
 }

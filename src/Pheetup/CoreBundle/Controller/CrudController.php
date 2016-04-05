@@ -114,9 +114,11 @@ class CrudController extends Controller
         $repo = $this->getRepository();
         $view = [];
         $item = $repo->find($id);
-        $view["item"] = (array)$item;
+        if (isset($item->group)) {
+            $item->group = $item->getGroup()->getName();
+        }
+        $view["item"] = (array)$item;;
         $view["title"] = $this->name;
-
         return $this->render('@PheetupCore/Crud/view.html.twig', $view);
     }
 
