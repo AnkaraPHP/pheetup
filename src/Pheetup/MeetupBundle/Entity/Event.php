@@ -43,10 +43,10 @@ class Event
      */
     protected $description;
     /**
-     * @ORM\ManyToOne(targetEntity="Pheetup\UserBundle\Entity\Group", inversedBy="events")
+     * @ORM\ManyToOne(targetEntity="Pheetup\UserBundle\Entity\Group", inversedBy="events",fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(name="group_id", referencedColumnName="id")
      */
-    public $group;
+    protected $group;
 
     /**
      * Get id

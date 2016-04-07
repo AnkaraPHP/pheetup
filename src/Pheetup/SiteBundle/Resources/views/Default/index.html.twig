@@ -31,11 +31,16 @@
     <!-- Last Events -->
     <div class="row">
         <div class="col-md-6">
-            <h3>Last Events</h3>
+            <h3>{{ "Last Events" |trans }}</h3>
             <ul>
                 {% for event in lastEvents %}
+                    {% if event.group.domain is defined %}
+                        {% set domain = event.group.domain %}
+                    {% else %}
+                        {% set domain = "temp" %}
+                    {% endif %}
                     <li>
-                        <a href="{{ url('pheetup_site_default_event',{id: event.id,group: event.group.domain }) }}">{{ event.title }}</a>
+                        <a href="{{ url('pheetup_site_default_event',{id: event.id,group: domain }) }}">{{ event.title }}</a>
                     </li>
                 {% endfor %}
             </ul>

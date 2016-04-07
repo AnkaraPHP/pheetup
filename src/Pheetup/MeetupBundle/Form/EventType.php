@@ -2,6 +2,7 @@
 
 namespace Pheetup\MeetupBundle\Form;
 
+use Pheetup\UserBundle\Entity\Group;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +19,14 @@ class EventType extends AbstractType
             ->add('title',"text",[
                 "label"=>"Etkinlik Adı"
             ])
-            ->add('group', 'text')
+            ->add(
+                'group',
+                'entity',
+                [
+                    'class' => 'PheetupUserBundle:Group',
+                    'choice_label' => 'name',
+                ]
+            )
             ->add('start','datetime',[
                 "label"=>"Etkinlik Ne Zaman Başlıyor"
             ])
