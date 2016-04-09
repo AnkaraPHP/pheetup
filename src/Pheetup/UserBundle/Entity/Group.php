@@ -46,6 +46,10 @@ class Group extends \FOS\UserBundle\Model\Group
      * @ORM\Column(type="string")
      */
     protected $logo;
+    /**
+     * @ORM\OneToMany(targetEntity="Pheetup\MeetupBundle\Entity\Event", mappedBy="group")
+     */
+    protected $events;
 
     /**
      * Set domain
@@ -141,5 +145,39 @@ class Group extends \FOS\UserBundle\Model\Group
     public function getLogo()
     {
         return $this->logo;
+    }
+
+    /**
+     * Add event
+     *
+     * @param \Pheetup\MeetupBundle\Entity\Event $event
+     *
+     * @return Group
+     */
+    public function addEvent(\Pheetup\MeetupBundle\Entity\Event $event)
+    {
+        $this->events[] = $event;
+
+        return $this;
+    }
+
+    /**
+     * Remove event
+     *
+     * @param \Pheetup\MeetupBundle\Entity\Event $event
+     */
+    public function removeEvent(\Pheetup\MeetupBundle\Entity\Event $event)
+    {
+        $this->events->removeElement($event);
+    }
+
+    /**
+     * Get events
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEvents()
+    {
+        return $this->events;
     }
 }

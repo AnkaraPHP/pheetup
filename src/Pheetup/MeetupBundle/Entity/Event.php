@@ -42,6 +42,11 @@ class Event
      * @ORM\Column(name="description",type="text")
      */
     protected $description;
+    /**
+     * @ORM\ManyToOne(targetEntity="Pheetup\UserBundle\Entity\Group", inversedBy="events",fetch="EXTRA_LAZY")
+     * @ORM\JoinColumn(name="group_id", referencedColumnName="id")
+     */
+    protected $group;
 
     /**
      * Get id
@@ -172,5 +177,29 @@ class Event
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set group
+     *
+     * @param \Pheetup\UserBundle\Entity\Group $group
+     *
+     * @return Event
+     */
+    public function setGroup(\Pheetup\UserBundle\Entity\Group $group = null)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return \Pheetup\UserBundle\Entity\Group
+     */
+    public function getGroup()
+    {
+        return $this->group;
     }
 }
