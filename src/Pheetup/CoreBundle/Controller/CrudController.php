@@ -5,6 +5,7 @@ namespace Pheetup\CoreBundle\Controller;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 use Pheetup\CoreBundle\Entity\CrudRepositoryInterface;
+use Pheetup\UserBundle\Entity\Group;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -114,9 +115,11 @@ class CrudController extends Controller
         $repo = $this->getRepository();
         $view = [];
         $item = $repo->find($id);
-        $view["item"] = (array)$item;;
-        if (!$item->getGroup() instanceof Events) {
-            unset($view["item"][array_keys($view["item"])[6]]);
+        $view["item"] = (array)$item;
+        if (method_exists($item, 'getGroup')) {
+            if ($item->getGroup() instanceof Group) {
+                unset($view["item"][array_keys($view["item"])[6]]);
+            }
         }
         $view["title"] = $this->name;
         return $this->render('@PheetupCore/Crud/view.html.twig', $view);

@@ -23,7 +23,7 @@ class GroupControllerTest extends ControllerTestCase
         $this->em = $this->container->get('doctrine.orm.entity_manager');
     }
 
-    public function testCreateAction()
+    private function createGroup($controller, $name, $domain)
     {
         $request = new Request();
         $request->setMethod('POST');
@@ -32,21 +32,29 @@ class GroupControllerTest extends ControllerTestCase
         $request->request->set(
             'pheetup_userbundle_group',
             [
-                'name' => "AnkaraPhp",
+                'name' => $name,
                 'description' => "Ankara'da güzel bir grup",
                 'logo' => "img.png",
                 'location' => 'Ankara / Turkey',
-                'domain' => 'ankaraphp',
+                'domain' => $domain,
                 'submit' => 'submit',
                 '_token' => $token,
             ]
         );
-        $response = $this->controller->createAction($request);
+
+        return $controller->createAction($request);
+    }
+
+    public function testCreateAction()
+    {
+        $name = 'AnkaraPhp';
+        $domain = 'ankaraphp';
+        $response = $this->createGroup($this->controller, $name, $domain);
         $this->assertEquals(302, $response->getStatusCode());
 
         $groupRepository = $this->em->getRepository('PheetupUserBundle:Group');
 
-        $group = $groupRepository->findOneBy(['name' => 'AnkaraPhp']);
+        $group = $groupRepository->findOneBy(['name' => $name]);
         $this->assertNotEmpty($group->getId());
     }
 }

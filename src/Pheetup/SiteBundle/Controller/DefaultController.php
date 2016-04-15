@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -41,16 +42,19 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/event/{id}")
-     * @ParamConverter("event",class="PheetupMeetupBundle:Event")
+     * @Route("/{domain}/join")
+     * @ParamConverter("group",class="PheetupUserBundle:Group")
      */
-    public function registerGroupAction(Event $event, $id)
+    public function joinAction(Group $group)
     {
-        $em = $this->getDoctrine()->getEntityManager();
-        $group = $em->getRepository('PheetupUserBundle:Group')->find($id);
-        $event->setGroup($group);
-        $em->persist($event);
-        $em->flush();
+        $isLogin = $this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY');
+        if ($isLogin) {
+            $token = $this->get('security.token_storage')->getToken();
+            $user = $token->getUser();
+            $user->addGroup($group);
+        }
+
+        return Response::create('You successfully joined group');
     }
 
     /**
