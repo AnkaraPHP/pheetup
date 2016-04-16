@@ -7,6 +7,8 @@
 namespace Pheetup\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use EP\DisplayBundle\Entity\DisplayTrait;
+use EP\DisplayBundle\Annotation as Display;
 
 /**
  * Class Group
@@ -17,7 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Group extends \FOS\UserBundle\Model\Group
 {
-
+    use DisplayTrait;
     /**
      * @var integer
      *
@@ -48,6 +50,7 @@ class Group extends \FOS\UserBundle\Model\Group
     protected $logo;
     /**
      * @ORM\OneToMany(targetEntity="Pheetup\MeetupBundle\Entity\Event", mappedBy="group")
+     * @Display\Exclude
      */
     protected $events;
 

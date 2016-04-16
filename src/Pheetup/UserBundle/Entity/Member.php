@@ -5,7 +5,8 @@ namespace Pheetup\UserBundle\Entity;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User;
-
+use EP\DisplayBundle\Entity\DisplayTrait;
+use EP\DisplayBundle\Annotation as Display;
 /**
  * Member
  *
@@ -14,6 +15,7 @@ use FOS\UserBundle\Model\User;
  */
 class Member extends User
 {
+    use DisplayTrait;
     /**
      * @var integer
      *
@@ -58,6 +60,7 @@ class Member extends User
      * @ORM\JoinTable(name="meetup_member_group",
      *     joinColumns={@ORM\JoinColumn(name="member_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")})
+     * @Display\Exclude
      */
     protected $groups;
 

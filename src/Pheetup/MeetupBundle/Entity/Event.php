@@ -9,6 +9,8 @@
 namespace Pheetup\MeetupBundle\Entity;
 
 use Doctrine\ORM\Mapping AS ORM;
+use EP\DisplayBundle\Entity\DisplayTrait;
+use EP\DisplayBundle\Annotation as Display;
 
 /**
  * @ORM\Entity(repositoryClass="Pheetup\MeetupBundle\Entity\EventRepository")
@@ -16,6 +18,7 @@ use Doctrine\ORM\Mapping AS ORM;
  */
 class Event
 {
+    use DisplayTrait;
     /**
      * @ORM\Column(name="id",type="integer")
      * @ORM\Id
@@ -45,6 +48,7 @@ class Event
     /**
      * @ORM\ManyToOne(targetEntity="Pheetup\UserBundle\Entity\Group", inversedBy="events",fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(name="group_id", referencedColumnName="id")
+     * @Display\Exclude
      */
     protected $group;
 
