@@ -29,6 +29,8 @@ class AppKernel extends Kernel
             new Pheetup\SiteBundle\PheetupSiteBundle(),
             new Pheetup\AdminBundle\PheetupAdminBundle(),
             new Pheetup\CoreBundle\PheetupCoreBundle(),
+
+            new EP\DisplayBundle\EPDisplayBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

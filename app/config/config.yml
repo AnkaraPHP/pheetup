@@ -110,3 +110,15 @@ hwi_oauth:
             github: github_id
 mopa_bootstrap:
     form: ~  # Adds twig form theme  support
+
+ep_display:
+    global:
+        image_render: false # (optinal) defaults to true
+        file_render: false # (optinal) defaults to true
+        template: EPDisplayBundle::display.html.twig # (optinal) defaults to EPDisplayBundle:display.html.twig template
+        exclude_vars: # (optinal) defaults to empty array
+            - excludeField
+            - hiddenField
+            - password
+        array_collection_render: true # (optinal) defaults to true
+        collection_item_count: 5 # (optinal) defaults to 10
