@@ -27,7 +27,8 @@
     "mopa/bootstrap-bundle": "dev-master",
     "twbs/bootstrap": "dev-master",
     "stof/doctrine-extensions-bundle": "^1.2",
-    "enterprisephp/display-bundle": "dev-master"
+    "enterprisephp/display-bundle": "dev-master",
+    "jms/di-extra-bundle": "dev-master"
   },
   "require-dev": {
     "doctrine/data-fixtures": "dev-master",

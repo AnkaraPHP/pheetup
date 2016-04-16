@@ -122,3 +122,6 @@ ep_display:
             - password
         array_collection_render: true # (optinal) defaults to true
         collection_item_count: 5 # (optinal) defaults to 10
+jms_di_extra:
+    locations:
+        all_bundles: false
