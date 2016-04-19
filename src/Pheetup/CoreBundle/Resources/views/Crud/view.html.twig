@@ -1,18 +1,4 @@
 {{ title }} Details
 <table>
-    {% for key,value in item %}
-        <tr>
-            <td><b>{{ key[2:] }}</b></td>
-            <td> :
-                {% if value.timestamp is defined %}
-                    {{ value| date("d/m/Y h:m") }}
-                {% elseif value is iterable %}
-                    -
-                {% else %}
-
-                    {{ value }}
-                {% endif %}
-            </td>
-        </tr>
-    {% endfor %}
+    {{ display(item) }}
 </table>

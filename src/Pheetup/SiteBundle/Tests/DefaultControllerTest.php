@@ -68,7 +68,6 @@ class DefaultControllerTest extends ControllerTestCase
         $firewallName = $this->container->getParameter('fos_user.firewall_name');
         $loginManager->logInUser($firewallName, $user);
         $this->assertTrue($this->container->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY'));
-        var_dump(method_exists($this->controller, 'joinAction'));
         $controller = new DefaultController();
         $controller->setContainer($this->container);
         $response = $controller->joinAction($group);
