@@ -25,7 +25,8 @@ class CrudController extends Controller
 
     /** @var string */
     protected $createView = 'PheetupCoreBundle:Crud:create.html.twig';
-
+    /** @var string */
+    protected $route = null;
     public function __construct( ContainerInterface $container )
     {
         $this->setContainer( $container );
@@ -47,15 +48,15 @@ class CrudController extends Controller
             throw new \Exception( "Repository class must be implemented CrudRepositoryInterface" );
         }
         $viewData = [ ];
-
-        $entity = $repository->createEntity();
+        $entity = $repository->find($id);
+        if (!$entity) {
+            $entity = $repository->createEntity();
+        }
 
         $form = $this->getCreateForm( $entity );
-
-
         $form->handleRequest( $request );
 
-        if ( $form->isSubmitted() && $request->getMethod() == "POST" )
+        if ($form->isSubmitted() && $request->getMethod() === "POST")
         {
             if ( $form->isValid() )
             {
@@ -63,9 +64,8 @@ class CrudController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist( $entity );
                 $em->flush();
-                $router = $this->container->get( 'router' );
 
-                return RedirectResponse::create( $router->generate( 'pheetup_event' ) );
+                return RedirectResponse::create($this->getRouter());
             }
             else
             {
@@ -87,6 +87,7 @@ class CrudController extends Controller
         $viewData          = [ ];
         $viewData['items'] = $items;
         $viewData['title'] = $this->name;
+        $viewData["route"] = $this->route;
         $response          = $this->render( "@PheetupCore/Crud/list.html.twig", $viewData );
 
         return $response;
@@ -95,17 +96,17 @@ class CrudController extends Controller
     public function deleteAction( Request $request, $id )
     {
         $em = $this->em;
-        $event = $em->find( 'PheetupMeetupBundle:Event', $id );
+        $repository = $this->getRepository();
+        $event = $repository->find($id);
         if ( !$event )
         {
             throw new NotFoundHttpException;
         }
-        $router   = $this->get( 'router' );
-        $listPage = $router->generate( 'pheetup_event' );
+        $listPage = $this->getRouter();
         $em->remove($event);
         $em->flush();
         $session= $this->get('session');
-        $session->getFlashBag()->add('notice','Successfully Deleted Event');
+        $session->getFlashBag()->add('notice', 'Successfully Deleted '.$this->name);
 
         return RedirectResponse::create( $listPage, 302 );
     }
@@ -124,6 +125,11 @@ class CrudController extends Controller
     protected function getRepository()
     {
         return NULL;
+    }
+
+    protected function getRouter()
+    {
+        return null;
     }
 
     protected function getCreateForm( $entity )
