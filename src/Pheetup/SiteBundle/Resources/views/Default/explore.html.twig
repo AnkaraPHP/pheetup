@@ -1,0 +1,16 @@
+{% if normalizedEntity["title"] is defined %}
+    <h1>{{ normalizedEntity["title"] }}</h1>
+{% elseif normalizedEntity["name"] is defined %}
+    <h1>{{ normalizedEntity["name"] }}</h1>
+    <h4>@{{ normalizedEntity["domain"] }}</h4>
+{% endif %}
+<table class="table">
+    <tbody>
+    {% for fieldName,fieldValue in normalizedEntity %}
+        <tr>
+            <th>{{ fieldName|trans }}</th>
+            <th>{{ fieldValue|raw }}</th>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

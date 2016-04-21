@@ -1,4 +1,7 @@
-{{ title }} Details
-<table>
-    {{ display(item) }}
-</table>
+{% extends '@PheetupSite/layout.html.twig' %}
+{% block content %}
+    {{ display(item,{
+        template:'@PheetupSite/default/explore.html.twig',
+        exclude:'id'
+    }) }}
+{% endblock %}
