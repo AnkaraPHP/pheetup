@@ -1,0 +1,9 @@
+{% extends '@PheetupSite/layout.html.twig' %}
+{% block content %}
+    {% for event in events %}
+        {{ display(event,{
+            template:'@PheetupSite/Default/explore.html.twig',
+            exclude:'id'
+        }) }}
+    {% endfor %}
+{% endblock %}
