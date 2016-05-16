@@ -19,7 +19,7 @@ class GroupType extends AbstractType
             ->add('domain')
             ->add('description')
             ->add('location')
-            ->add('logo')
+            ->add('logo', 'file')
             ->add('submit', 'submit');
     }
 
