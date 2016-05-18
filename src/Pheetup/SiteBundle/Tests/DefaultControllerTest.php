@@ -50,8 +50,9 @@ class DefaultControllerTest extends ControllerTestCase
 * return $controller->createAction($request);
     * }
  *
-* public function testJoinAction()
-    * {
+     * */
+    public function testJoinAction()
+    {/*
         * $name = "GrupDeneme";
         * $domain = "denemegrup";
         * $groupResponse = $this->createGroup($this->container->get('pheetup.controller.user.group'), $name, $domain);
@@ -77,6 +78,7 @@ class DefaultControllerTest extends ControllerTestCase
         * $response = $controller->joinAction($group);
         * $this->assertEquals($response->getContent(), "You successfully joined group");
      *
-     * }
-     **/
+     */
+    }
+
 }
