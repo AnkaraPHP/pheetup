@@ -27,34 +27,22 @@ class EventControllerTest extends ControllerTestCase
     {
         $request = new Request();
         $request->setMethod( 'POST' );
-        $startDate  = new \DateTime( "-3 days" );
-        $finishDate = new \DateTime( "-2 days" );
+        $startDate = "2016-05-20";
+        $startTime = "12:00";
+        $finishDate = "2016-05-21";
+        $finishTime = "10:00";
         $csrf       = $this->container->get( 'security.csrf.token_manager' );
         $token      = $csrf->getToken( 'pheetup_meetupbundle_event' );
         $request->request->set( 'pheetup_meetupbundle_event', [
             'title'       => "AnkaraPHP",
             'description' => 'Deneme',
             'start'       => [
-                'date' => [
-                    'year'  => (int)$startDate->format( 'Y' ),
-                    'month' => (int)$startDate->format( 'm' ),
-                    'day'   => (int)$startDate->format( 'd' ),
-                ],
-                'time' => [
-                    'hour'   => (int)$startDate->format( 'H' ),
-                    'minute' => (int)$startDate->format( 'i' ),
-                ],
+                'date' => $startDate,
+                'time' => $startTime,
             ],
             'finish'      => [
-                'date' => [
-                    'year'  => (int)$finishDate->format( 'Y' ),
-                    'month' => (int)$finishDate->format( 'm' ),
-                    'day'   => (int)$finishDate->format( 'd' ),
-                ],
-                'time' => [
-                    'hour'   => (int)$finishDate->format( 'H' ),
-                    'minute' => (int)$finishDate->format( 'i' ),
-                ],
+                'date' => $finishDate,
+                'time' => $finishTime,
             ],
             'submit'      => 'submit',
             'location'    => "Ankara, Turkiye",
