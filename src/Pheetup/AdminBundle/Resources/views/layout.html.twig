@@ -11,26 +11,8 @@
 
     <title>Pheetup Admin</title>
 
-    <!-- Bootstrap Core CSS -->
-    {% stylesheets '@PheetupAdminBundle/Resources/public/css/bootstrap.min.css' %}
-    <link href="{{ asset_url }}" rel="stylesheet">
-    {% endstylesheets %}
-
-    <!-- MetisMenu CSS -->
-    {% stylesheets '@PheetupAdminBundle/Resources/public/css/metisMenu.min.css' %}
-    <link href="{{ asset_url }}" rel="stylesheet">
-    {% endstylesheets %}
-
-    <!-- Custom Fonts -->
-    {% stylesheets '@PheetupAdminBundle/Resources/public/css/font-awesome.min.css' %}
-    <link href="{{ asset_url }}" rel="stylesheet">
-    {% endstylesheets %}
-    <!--DateTime Picker CSS-->
-    {% stylesheets '@PheetupAdminBundle/Resources/public/css/jquery.datetimepicker.min.css' %}
-    <link href="{{ asset_url }}" rel="stylesheet">
-    {% endstylesheets %}
-    <!-- Custom CSS -->
-    {% stylesheets '@PheetupAdminBundle/Resources/public/css/sb-admin-2.css' %}
+    <!-- CSS -->
+    {% stylesheets '@PheetupAdminBundle/Resources/public/css/*' %}
     <link href="{{ asset_url }}" rel="stylesheet">
     {% endstylesheets %}
 
@@ -214,26 +196,8 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    {% javascripts '@PheetupAdminBundle/Resources/public/js/jquery.min.js' %}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-    <!-- Bootstrap Core JavaScript -->
-    {% javascripts '@PheetupAdminBundle/Resources/public/js/bootstrap.min.js' %}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-
-    <!-- Metis Menu Plugin JavaScript -->
-    {% javascripts '@PheetupAdminBundle/Resources/public/js/metisMenu.min.js' %}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-    <!-- DateTime Picker JavaScript-->
-    {% javascripts '@PheetupAdminBundle/Resources/public/js/jquery.datetimepicker.full.js' %}
-    <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-
-    <!-- Custom Theme JavaScript -->
-    {% javascripts '@PheetupAdminBundle/Resources/public/js/sb-admin-2.js' %}
+    <!-- Scripts -->
+    {% javascripts '@PheetupAdminBundle/Resources/public/js/*' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 </div>
