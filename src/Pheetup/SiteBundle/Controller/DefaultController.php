@@ -38,7 +38,14 @@ class DefaultController extends Controller
      */
     public function groupAction(Group $group)
     {
-        return $this->forward('pheetup.controller.user.group:viewAction', ['id' => $group->getId()]);
+        $events = $group->getEvents();
+
+        return $this->render(
+            '@PheetupSite/Default/group.html.twig',
+            [
+                'events' => $events,
+            ]
+        );
     }
 
     /**

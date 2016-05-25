@@ -28,10 +28,14 @@ class EventType extends AbstractType
                 ]
             )
             ->add('start','datetime',[
-                "label"=>"Etkinlik Ne Zaman Başlıyor"
+                "label" => "Etkinlik Ne Zaman Başlıyor",
+                "date_widget" => "single_text",
+                "time_widget" => "single_text",
             ])
             ->add('finish','datetime',[
-                "label"=>"Etkinlik Ne Zaman Bitiyor"
+                "label" => "Etkinlik Ne Zaman Bitiyor",
+                "date_widget" => "single_text",
+                "time_widget" => "single_text",
             ])
             ->add('location','text',[
                 "label"=>"Etkinlik Nerede"

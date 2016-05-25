@@ -10,6 +10,7 @@ namespace Pheetup\SiteBundle\Tests\Controller;
 
 use Doctrine\ORM\EntityManager;
 use Pheetup\SiteBundle\Controller\DefaultController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Pheetup\CoreBundle\Tests\Controller\ControllerTestCase;
 
@@ -30,18 +31,23 @@ class DefaultControllerTest extends ControllerTestCase
         $request->setMethod('POST');
         $csrf = $this->container->get('security.csrf.token_manager');
         $token = $csrf->getToken('pheetup_userbundle_group');
+        $dir = dirname($this->container->getParameter('kernel.root_dir')).'/src/Pheetup/UserBundle/Tests/Media/';
+        copy($dir.'test.jpg', $dir.'test1.jpg');
+        $path = $dir.'test1.jpg';
+        $logo = new UploadedFile($path, 'test.png', 'image/png', filesize($path), UPLOAD_ERR_OK, true);
         $request->request->set(
             'pheetup_userbundle_group',
             [
                 'name' => $name,
                 'description' => "Ankara'da güzel bir grup",
-                'logo' => "img.png",
+                'logo' => $logo,
                 'location' => 'Ankara / Turkey',
                 'domain' => $domain,
                 'submit' => 'submit',
                 '_token' => $token,
             ]
         );
+        $request->files->get('logo');
 
         return $controller->createAction($request);
     }
@@ -73,5 +79,7 @@ class DefaultControllerTest extends ControllerTestCase
         $response = $controller->joinAction($group);
         $this->assertEquals($response->getContent(), "You successfully joined group");
 
+
     }
+
 }

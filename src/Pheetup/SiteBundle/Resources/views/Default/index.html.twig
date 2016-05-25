@@ -30,7 +30,7 @@
     <hr>
     <!-- Last Events -->
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <h3>{{ "Last Events" |trans }}</h3>
             <ul>
                 {% for event in lastEvents %}
@@ -39,8 +39,15 @@
                     {% else %}
                         {% set domain = "temp" %}
                     {% endif %}
-                    <li>
-                        <a href="{{ url('pheetup_site_default_event',{id: event.id,group: domain }) }}">{{ event.title }}</a>
+                    {% if event.group.logo is defined %}
+                        {% set logo = event.group.logo %}
+                    {% else %}
+                        {% set logo = "default.png" %}
+                    {% endif %}
+                    <li style="display: inline;">
+                        <a href="{{ url('pheetup_site_default_event',{id: event.id,group: domain }) }}">
+                            <img height="128px" width="128px" src="./uploads/{{ logo }}" alt="">
+                        </a>
                     </li>
                 {% endfor %}
             </ul>

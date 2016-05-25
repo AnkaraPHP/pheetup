@@ -16,6 +16,7 @@ use EP\DisplayBundle\Annotation as Display;
  * @package Pheetup\UserBundle\Entity
  * @ORM\Entity(repositoryClass="Pheetup\UserBundle\Entity\GroupRepository")
  * @ORM\Table(name="meetup_group")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Group extends \FOS\UserBundle\Model\Group
 {
@@ -53,7 +54,44 @@ class Group extends \FOS\UserBundle\Model\Group
      * @Display\Exclude
      */
     protected $events;
+    private $file;
 
+    public function getUploadDir()
+    {
+        return './uploads';
+    }
+
+    private function uniqueName()
+    {
+        return md5(uniqid()).'.'.$this->logo->guessExtension();
+    }
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function preUpload()
+    {
+        if ($this->getLogo()) {
+            $this->file = $this->getLogo();
+            $this->setLogo($this->uniqueName());
+        }
+    }
+
+    /**
+     * @ORM\PostPersist
+     * @ORM\PostUpdate
+     */
+    public function postUpload()
+    {
+        if (!$this->file) {
+            return;
+        }
+        $this->file->move(
+            $this->getUploadDir(),
+            $this->logo
+        );
+    }
     /**
      * Set domain
      *

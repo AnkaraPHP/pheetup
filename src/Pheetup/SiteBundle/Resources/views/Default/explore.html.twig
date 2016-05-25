@@ -4,6 +4,9 @@
     <h1>{{ normalizedEntity["name"] }}</h1>
     <h4>@{{ normalizedEntity["domain"] }}</h4>
 {% endif %}
+{% if normalizedEntity["logo"] is defined %}
+    <img height="200px" src="/uploads/{{ normalizedEntity["logo"] }}" alt="">
+{% endif %}
 <table class="table">
     <tbody>
     {% for fieldName,fieldValue in normalizedEntity %}
